@@ -5,7 +5,7 @@ public class Ass3 {
 		// TODO Auto-generated method stub
 		//yeehong
 		//Andy Zhang
-		//Winnie
+		//Winnie Lu
 
 	}
 
