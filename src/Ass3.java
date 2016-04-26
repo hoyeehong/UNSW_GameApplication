@@ -5,7 +5,7 @@ public class Ass3 {
 		
 		//yeehong: Always Pull first before you want to start your work.
 		//Andy Zhang
-		//Winnie
+		//Winnie Lu - winlu89
 
 	}
 
