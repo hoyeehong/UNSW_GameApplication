@@ -1,99 +1,93 @@
 import java.awt.Image;
-import java.awt.event.KeyEvent;
-import javax.swing.ImageIcon;
-
 /**
- * When keyboard arrow keys are pressed, the character will move
- * accordingly on the initial Maze.
+ * 
  * @author Yeehong
  *
  */
 public class Character{
-	 private int dx;
-	 private int dy;
-	 private int x;
-	 private int y;
+	 private final int SPACE = 10;
+	    
+	 private int x;	  
+	 private int y;	    
 	 private Image image;
-
-	 public Character()
-	 {
-		 initCharacter();
+	    
+	 public Character(int x, int y)	    
+	 {	        
+		 this.x = x;	        
+		 this.y = y;    
+	 }
+	 
+	 public Image getImage()    
+	 {	        
+		 return this.image;    
+	 } 
+	 public void setImage(Image img)	    
+	 {        	
+		 image = img;    
+	 }    
+	 public int x()	   
+	 {	        
+		 return this.x;    
+	 }  
+	 public int y()	    
+	 {	       
+		 return this.y;	    
+	 }	    
+	 public void setX(int x)    
+	 {	       
+		 this.x = x;    
+	 }	    
+	 public void setY(int y)	    
+	 {	        
+		 this.y = y;    
+	 }
+	 
+	 public boolean isLeftCollision(Character character)	    
+	 {	        
+		 if(((this.x() - SPACE) == character.x()) && (this.y() == character.y()))	        
+		 {
+			 return true;        
+		 } 	        
+		 else	        
+		 {	            
+			 return false;	        
+		 }    
+	 }
+    
+	 public boolean isRightCollision(Character character)
+	 {       
+		 if (((this.x() + SPACE) == character.x()) && (this.y() == character.y()))        
+		 {            	
+			 return true;       
+		 } 	        
+		 else	        
+		 {	            
+			 return false;        
+		 }    
 	 }
 	    
-	 private void initCharacter()
-	 {        
-	     ImageIcon ii = new ImageIcon("src/playerIcon.png");
-	     image = ii.getImage();
-	     x = 40;
-	     y = 60;        
+	 public boolean isTopCollision(Character character)
+	 {       
+		 if (((this.y() - SPACE) == character.y()) && (this.x() == character.x()))        
+		 {            
+			 return true;        
+		 }         
+		 else         
+		 {	            
+			 return false;	        
+		 }    
 	 }
-
-	 public void move()
-	 {
-	     x += dx;
-	     y += dy;
-	 }
-
-	 public int getX()
-	 {
-	     return x;
-	 }
-
-	 public int getY()
-	 {
-	     return y;
-	 }
-
-	 public Image getImage()
-	 {
-		 return image;
-	 }
-
-	 public void keyPressed(KeyEvent e)
-	 {
-	     int key = e.getKeyCode();
-
-	     if (key == KeyEvent.VK_LEFT)
-	     {
-	    	 dx = -1;
-	     }
-	     if (key == KeyEvent.VK_RIGHT)
-	     {
-	         dx = 1;
-	     }
-	     if (key == KeyEvent.VK_UP)
-	     {
-	         dy = -1;
-	     }
-	     if (key == KeyEvent.VK_DOWN)
-	     {
-	         dy = 1;
-	     }
-	 }
-
-	 public void keyReleased(KeyEvent e)
-	 {        
-		 int key = e.getKeyCode();
-
-	     if (key == KeyEvent.VK_LEFT)
-	     {
-	         dx = 0;
-	     }
-
-	     if (key == KeyEvent.VK_RIGHT)
-	     {
-	         dx = 0;
-	     }
-
-	     if (key == KeyEvent.VK_UP)
-	     {
-	         dy = 0;
-	     }
-
-	     if (key == KeyEvent.VK_DOWN)
-	     {
-	         dy = 0;
-	     }
+	    
+	 public boolean isBottomCollision(Character character) 	    
+	 {	        
+		 if(((this.y() + SPACE) == character.y()) && (this.x() == character.x()))	        
+		 {	            
+			 return true;	        
+		 } 	        
+		 else 	        
+		 {	           
+			 return false;	        
+		 }    
 	 }
 
 }
