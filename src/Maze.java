@@ -1,13 +1,39 @@
+import java.awt.EventQueue;
+import javax.swing.JFrame;
 
-public class Maze{
-
+/**
+ * Creates the main Maze map
+ *
+ */
+public class Maze extends JFrame{
+	
+	public Maze()
+	{     
+        initUI();
+    }
+	 
+	private void initUI()
+	{       
+		add(new Board());
+		
+		setSize(800, 700);        
+		setResizable(false);  
+		setTitle("Moving character");        
+		setLocationRelativeTo(null);      
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
+	}
+	 
 	public static void main(String[] args)
-	{		
-		Yeehong
-		Apparently no errors will appear if you start coding and
-		I'm not sure why. So I guess for now we could just create 
-		an external project in our Eclipse and if we're done coding,
-		just copy paste to the cloned project and Push.
+	{	
+		EventQueue.invokeLater(new Runnable()
+		{        
+			@Override
+            public void run()
+			{                       	
+				Maze demo = new Maze();
+            	demo.setVisible(true);
+            }
+        });
 	}
 
 }
