@@ -29,7 +29,6 @@ public class Board extends JPanel implements ActionListener{
     private boolean completed = false;
 
     private String level =
-<<<<<<< HEAD
             "###  ###\n"
           + "#@#  # # \n"
           + "# #  # # \n"
@@ -44,19 +43,6 @@ public class Board extends JPanel implements ActionListener{
           + "#######\n";
     		
 
-=======
-            "    ######\n"
-          + "    ##   #\n"
-          + "    ##   #\n"
-          + "  ####   ##\n"
-          + "  ##      #    #\n" 
-          + "#### # ## #   #.#\n"
-          + "##   # ## ##### #\n"
-          + "##              #\n"
-          + "###### ### #@####\n"
-          + "    ##     ####\n"
-          + "    ########\n";
->>>>>>> branch 'master' of https://hoyeehong@bitbucket.org/apro165/2911-project-2016.git
     
 	public Board()
 	{
