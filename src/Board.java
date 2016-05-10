@@ -40,7 +40,6 @@ public class Board extends JPanel implements ActionListener{
           + "###### ### #@####\n"
           + "    ##     ####\n"
           + "    ########\n";
-
     
 	public Board()
 	{
