@@ -29,17 +29,19 @@ public class Board extends JPanel implements ActionListener{
     private boolean completed = false;
 
     private String level =
-            "    ######\n"
-          + "    ##   #\n"
-          + "    ##   #\n"
-          + "  ####   ##\n"
-          + "  ##      #    #\n" 
-          + "#### # ## #   #.#\n"
-          + "##   # ## ##### #\n"
-          + "##              #\n"
-          + "###### ### #@####\n"
-          + "    ##     ####\n"
-          + "    ########\n";
+            "###  ###\n"
+          + "#@#  # # \n"
+          + "# #  # # \n"
+          + "# #### ######\n"
+          + "#           #\n"
+          + "# ### #######\n"
+          + "# # #    #.#\n"
+          + "# # # ## # #####\n"
+          + "#              #\n"
+          + "# ### ##########\n"
+          + "#   # #\n"
+          + "#######\n";
+    		
 
     
 	public Board()
