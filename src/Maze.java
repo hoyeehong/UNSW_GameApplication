@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 /**
  * Creates the main Maze map
@@ -15,10 +16,13 @@ public class Maze extends JFrame{
 	}
 	
 	private void initUI()
-	{   
-		panel = new JPanel();	
-		GroupLayout layout = new GroupLayout(panel);
-		panel.setLayout(layout);
+	{   	
+		rootPanel = new JPanel();
+		welcomePanel = new JPanel();
+		BorderLayout layout = new BorderLayout();     	
+		welcomePanel.setLayout(layout);	
+		rootPanel.add(welcomePanel);
+		rootPanel.setBorder(new EmptyBorder(new Insets(250, 321, 250, 321)));
 		
 		statusBar = new JLabel("Status");
 		statusBar.setBorder(BorderFactory.createEtchedBorder());
@@ -27,24 +31,14 @@ public class Maze extends JFrame{
 		
 		JButton startButton = new JButton("Start");
 		startButton.addActionListener(buttonListener);
-
         /*JButton easyLevel = new JButton("Easy Mode");
         easyLevel.addActionListener(buttonListener);
-
         JButton mediumLevel = new JButton("Medium Mode");
         mediumLevel.addActionListener(buttonListener);*/
 
-		layout.setHorizontalGroup(layout.createParallelGroup()
-				.addComponent(startButton).addGap(500));
-		
-		layout.setVerticalGroup(layout.createSequentialGroup()
-				.addComponent(startButton).addGap(500));
-		
-		layout.setAutoCreateContainerGaps(true);
-		layout.setAutoCreateGaps(true);
-		layout.linkSize(startButton);
-		
-		add(panel, BorderLayout.CENTER);
+		welcomePanel.add(startButton, BorderLayout.CENTER);
+
+		add(rootPanel);	
 		add(statusBar, BorderLayout.SOUTH);
 		pack();
       
@@ -57,25 +51,22 @@ public class Maze extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e)
         {
-        	panel.setVisible(false);
-        	Board board = new Board();
-            add(board);
+        	rootPanel.setVisible(false);
 
-            setSize(board.getBoardWidth() + OFFSET, board.getBoardHeight() + 2*OFFSET);
-                  
-            //JButton o = (JButton) e.getSource();
-            //String label = o.getText();
-            //statusBar.setText(" " + label + " button clicked");
+        	Board board = new Board();  	
+        	setSize(board.getBoardWidth() + OFFSET, board.getBoardHeight() + 2*OFFSET);
+        	add(board);    	
         }
     }
 	
 	public Maze()
 	{
 		super("Maze");
-		initUI();			   
+		initUI();
     }
 	
-	private JPanel panel;
+	private JPanel rootPanel;
+	private JPanel welcomePanel;
 	private JLabel statusBar;
-	private final int OFFSET = 80;
+	private final int OFFSET = 40;
 }
