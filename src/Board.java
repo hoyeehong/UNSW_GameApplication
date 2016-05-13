@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 /**
  * 
  * @author Yeehong
- *
  */
 public class Board extends JPanel implements ActionListener{
 	
@@ -394,8 +393,9 @@ public class Board extends JPanel implements ActionListener{
         }
     }
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
+    @Override
+	public void actionPerformed(ActionEvent e)
+    {
 	
 	}
 
