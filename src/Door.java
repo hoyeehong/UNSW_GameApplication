@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
  * @author Yeehong
  *
  */
-public class Door extends Character{	
+public class Door extends Object{	
 	public Door(int x, int y)
 	{	        
 		super(x, y);

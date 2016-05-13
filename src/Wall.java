@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
  * @author Yeehong
  *
  */
-public class Wall extends Character{
+public class Wall extends Object{
 	
 	private Image image;
 

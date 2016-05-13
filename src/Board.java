@@ -29,17 +29,17 @@ public class Board extends JPanel implements ActionListener{
     private boolean completed = false;
 
     private String level =
-            "##################\n"
-          + "#@    ########### \n"
-          + "# ### # \n"
-          + "# #   ######\n"
-          + "# #####        #\n"
-          + "#  #  #######\n"
-          + "#     ##.#\n"
-          + "### #### #####\n"
-          + "#   #          #\n"
+            "###  ### ### \n"
+          + "#@#  # # # # \n"
+          + "# #  # # # # \n"
+          + "# #### ### ##\n"
+          + "#           #\n"
+          + "# ###########\n"
+          + "# # #    #.#\n"
+          + "# # # ## # #####\n"
+          + "#      #       #\n"
           + "# ### ##########\n"
-          + "#     #\n"
+          + "#   # #\n"
           + "#######\n";
     		
 
@@ -124,7 +124,7 @@ public class Board extends JPanel implements ActionListener{
 
         for (int i = 0; i < world.size(); i++)
         {
-        	Character item = (Character) world.get(i);
+        	Object item = (Object) world.get(i);
             if ((item instanceof Player) || (item instanceof Door))
             {
                 g.drawImage(item.getImage(), item.x(), item.y(), this);
@@ -207,7 +207,7 @@ public class Board extends JPanel implements ActionListener{
         }
     }
 
-    private boolean checkWallCollision(Character character, int type)
+    private boolean checkWallCollision(Object character, int type)
     {
         if (type == LEFT_COLLISION)
         {

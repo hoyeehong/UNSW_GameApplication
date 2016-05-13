@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
  * @author Yeehong
  *
  */
-public class Player extends Character{
+public class Player extends Object{
 
 	public Player(int x, int y) 
 	{

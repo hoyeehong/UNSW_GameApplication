@@ -1,4 +1,3 @@
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 /**
@@ -6,34 +5,28 @@ import javax.swing.JFrame;
  *
  */
 public class Maze extends JFrame{
-	
+	private final int OFFSET = 30;
 	public Maze()
-	{     
+	{
+		super("The title bar");
         initUI();
     }
 	 
 	private void initUI()
 	{       
-		add(new Board());
-		
-		setSize(800, 700);        
-		setResizable(false);  
-		setTitle("Moving character");        
-		setLocationRelativeTo(null);      
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
+		Board board = new Board();
+        add(board);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(board.getBoardWidth() + OFFSET, board.getBoardHeight() + 2*OFFSET);
+        setLocationRelativeTo(null);
+        //setTitle("Maze"); 
 	}
 	 
 	public static void main(String[] args)
 	{	
-		EventQueue.invokeLater(new Runnable()
-		{        
-			@Override
-            public void run()
-			{                       	
-				Maze demo = new Maze();
-            	demo.setVisible(true);
-            }
-        });
+		Maze maze = new Maze();
+        maze.setVisible(true);
 	}
 
 }
