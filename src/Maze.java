@@ -15,28 +15,51 @@ public class Maze extends JFrame{
         maze.setVisible(true);      
 	}
 	
+	
+	
 	private void initUI()
-	{   	
-		rootPanel = new JPanel();
-		welcomePanel = new JPanel();
+	{  
+		rootPanel = new BackgroundPanel();
+		welcomePanel = new BackgroundPanel();
+		welcomePanel.setOpaque(false);
 		BorderLayout layout = new BorderLayout();     	
 		welcomePanel.setLayout(layout);	
+		
 		rootPanel.add(welcomePanel);
-		rootPanel.setBorder(new EmptyBorder(new Insets(250, 321, 250, 321)));
+		rootPanel.setBorder(new EmptyBorder(new Insets(40, 40, 40, 40)));
+		layout.setHgap(15);
+		layout.setVgap(5);
+		
 		
 		statusBar = new JLabel("Status");
 		statusBar.setBorder(BorderFactory.createEtchedBorder());
 		
 		ButtonListener buttonListener = new ButtonListener();
 		
-		JButton startButton = new JButton("Start");
-		startButton.addActionListener(buttonListener);
-        /*JButton easyLevel = new JButton("Easy Mode");
+		//Easy Mode button
+        JButton easyLevel = new JButton("Easy Mode");
         easyLevel.addActionListener(buttonListener);
+        easyLevel.setBackground(Color.black);
+        easyLevel.setForeground(Color.white);
+        easyLevel.setBorderPainted(false); 
+        //Medium Mode button
         JButton mediumLevel = new JButton("Medium Mode");
-        mediumLevel.addActionListener(buttonListener);*/
+        mediumLevel.addActionListener(buttonListener);
+        mediumLevel.setBackground(Color.black);
+        mediumLevel.setForeground(Color.white);
+        mediumLevel.setBorderPainted(false);
+        //Hard Mode button
+        JButton hardLevel = new JButton("Hard Mode");
+        hardLevel.addActionListener(buttonListener);
+        hardLevel.setBackground(Color.black);
+        hardLevel.setForeground(Color.white);
+        hardLevel.setBorderPainted(false);
+        
 
-		welcomePanel.add(startButton, BorderLayout.CENTER);
+        welcomePanel.add(easyLevel, BorderLayout.WEST);
+        welcomePanel.add(mediumLevel, BorderLayout.CENTER);
+		welcomePanel.add(hardLevel, BorderLayout.EAST);
+		
 
 		add(rootPanel);	
 		add(statusBar, BorderLayout.SOUTH);
@@ -59,9 +82,34 @@ public class Maze extends JFrame{
         }
     }
 	
+	
+	class BackgroundPanel extends JPanel
+	{
+	  Image image;
+	  public BackgroundPanel()
+	  {
+	    try
+	    {
+	      image = javax.imageio.ImageIO.read(new java.net.URL(getClass().getResource("image.jpg"), "image.jpg"));
+	    }
+	    catch (Exception e) { /*handled in paintComponent()*/ }
+	  }
+	 
+	  @Override
+	  protected void paintComponent(Graphics g)
+	  {
+	    super.paintComponent(g); 
+	    if (image != null)
+	      g.drawImage(image, 0,0,this.getWidth(),this.getHeight(),this);
+	  }
+	}
+	
+	
+	
+	
 	public Maze()
 	{
-		super("Maze");
+		super("MazeMaster");
 		initUI();
     }
 	
@@ -69,4 +117,5 @@ public class Maze extends JFrame{
 	private JPanel welcomePanel;
 	private JLabel statusBar;
 	private final int OFFSET = 40;
+	private ImageIcon icon;
 }
