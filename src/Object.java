@@ -5,7 +5,7 @@ import java.awt.Image;
  *
  */
 public class Object{
-	 private final int SPACE = 10;
+	 private final int SPACE = 40;
 	    
 	 private int x;	  
 	 private int y;	    

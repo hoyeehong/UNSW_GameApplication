@@ -1,5 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+import java.net.MalformedURLException;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -15,107 +18,83 @@ public class Maze extends JFrame{
         maze.setVisible(true);      
 	}
 	
-	
-	
-	private void initUI()
-	{  
+	private void initHomepage()
+	{   	
 		rootPanel = new BackgroundPanel();
-		welcomePanel = new BackgroundPanel();
-		welcomePanel.setOpaque(false);
-		BorderLayout layout = new BorderLayout();     	
-		welcomePanel.setLayout(layout);	
 		
-		rootPanel.add(welcomePanel);
-		rootPanel.setBorder(new EmptyBorder(new Insets(40, 40, 40, 40)));
+		BorderLayout layout = new BorderLayout();
 		layout.setHgap(15);
 		layout.setVgap(5);
 		
+		rootPanel.setLayout(layout);
+		rootPanel.setOpaque(false);
+		rootPanel.setBorder(new EmptyBorder(new Insets(250, 321, 250, 321)));
 		
-		statusBar = new JLabel("Status");
+		JLabel statusBar = new JLabel("Status");
 		statusBar.setBorder(BorderFactory.createEtchedBorder());
 		
-		ButtonListener buttonListener = new ButtonListener();
-		
-		//Easy Mode button
-        JButton easyLevel = new JButton("Easy Mode");
-        easyLevel.addActionListener(buttonListener);
-        easyLevel.setBackground(Color.black);
+		JButton easyLevel = new JButton("Easy Mode");
+		easyLevel.setBackground(Color.black);
         easyLevel.setForeground(Color.white);
-        easyLevel.setBorderPainted(false); 
-        //Medium Mode button
+        easyLevel.setBorderPainted(false); 		
+		easyLevel.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				initMazeUI();      
+			}
+		});
+		
         JButton mediumLevel = new JButton("Medium Mode");
-        mediumLevel.addActionListener(buttonListener);
         mediumLevel.setBackground(Color.black);
         mediumLevel.setForeground(Color.white);
-        mediumLevel.setBorderPainted(false);
-        //Hard Mode button
+        mediumLevel.setBorderPainted(false);    
+        mediumLevel.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				initMazeUI();      
+			}
+		});	
+        
         JButton hardLevel = new JButton("Hard Mode");
-        hardLevel.addActionListener(buttonListener);
         hardLevel.setBackground(Color.black);
         hardLevel.setForeground(Color.white);
-        hardLevel.setBorderPainted(false);
-        
+        hardLevel.setBorderPainted(false);      
+        hardLevel.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				initMazeUI();      
+			}
+		});	
 
-        welcomePanel.add(easyLevel, BorderLayout.WEST);
-        welcomePanel.add(mediumLevel, BorderLayout.CENTER);
-		welcomePanel.add(hardLevel, BorderLayout.EAST);
+		rootPanel.add(easyLevel, BorderLayout.WEST);
+		rootPanel.add(mediumLevel, BorderLayout.CENTER);
+		rootPanel.add(hardLevel, BorderLayout.EAST);
 		
-
-		add(rootPanel);	
+		add(rootPanel);
 		add(statusBar, BorderLayout.SOUTH);
-		pack();
-      
-		setLocationRelativeTo(null); 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-             
-	}
-	private class ButtonListener implements ActionListener
-	{
-        @Override
-        public void actionPerformed(ActionEvent e)
-        {
-        	rootPanel.setVisible(false);
-
-        	Board board = new Board();  	
-        	setSize(board.getBoardWidth() + OFFSET, board.getBoardHeight() + 2*OFFSET);
-        	add(board);    	
-        }
-    }
-	
-	
-	class BackgroundPanel extends JPanel
-	{
-	  Image image;
-	  public BackgroundPanel()
-	  {
-	    try
-	    {
-	      image = javax.imageio.ImageIO.read(new java.net.URL(getClass().getResource("image.jpg"), "image.jpg"));
-	    }
-	    catch (Exception e) { /*handled in paintComponent()*/ }
-	  }
-	 
-	  @Override
-	  protected void paintComponent(Graphics g)
-	  {
-	    super.paintComponent(g); 
-	    if (image != null)
-	      g.drawImage(image, 0,0,this.getWidth(),this.getHeight(),this);
-	  }
+		
+		pack();        
 	}
 	
-	
-	
+	private void initMazeUI()
+	{
+		Board board = new Board();
+    	add(board);  	
+    	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
+    	setSize(board.getBoardWidth() + OFFSET, board.getBoardHeight() + 2*OFFSET);      	       	
+    	setLocationRelativeTo(null); 	
+    	rootPanel.setVisible(false);
+	}
 	
 	public Maze()
 	{
-		super("MazeMaster");
-		initUI();
+		super("Maze");
+		initHomepage();
     }
-	
+	private Image bg;
 	private JPanel rootPanel;
-	private JPanel welcomePanel;
-	private JLabel statusBar;
-	private final int OFFSET = 40;
-	private ImageIcon icon;
+	private final int OFFSET = 50;
 }

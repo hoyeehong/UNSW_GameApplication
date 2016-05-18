@@ -10,17 +10,17 @@ import javax.swing.JPanel;
  * 
  * @author Yeehong
  */
-public class Board extends JPanel implements ActionListener{
+public class Board extends JPanel{
 	
-    private final int OFFSET = 20;
-    private final int SPACE = 42;
+    private final int OFFSET = 50;
+    private final int SPACE = 40;
     private final int LEFT_COLLISION = 1;
     private final int RIGHT_COLLISION = 2;
     private final int TOP_COLLISION = 3;
     private final int BOTTOM_COLLISION = 4;
 
     private ArrayList walls = new ArrayList();
-    //private ArrayList baggs = new ArrayList();
+    private ArrayList baggs = new ArrayList();
     private ArrayList door = new ArrayList();
     private Player player;
     private int w = 0;
@@ -34,8 +34,8 @@ public class Board extends JPanel implements ActionListener{
           + "# #### ### ##\n"
           + "#           #\n"
           + "# ###########\n"
-          + "# # #    #.#\n"
-          + "# # # ## # #####\n"
+          + "# # #    ###\n"
+          + "# # # ## #.#####\n"
           + "#      #       #\n"
           + "# ### ##########\n"
           + "#   # #\n"
@@ -57,7 +57,7 @@ public class Board extends JPanel implements ActionListener{
         
         Wall wall; 
         Door d;
-        //Baggage b;
+        Baggage b;
 
         for (int i = 0; i < level.length(); i++)
         {
@@ -78,12 +78,12 @@ public class Board extends JPanel implements ActionListener{
                 walls.add(wall);
                 x += SPACE;
             }
-            /*else if (item == '$')
+            else if (item == '$')
             {         
             	b = new Baggage(x, y);
                 baggs.add(b);
                 x += SPACE;
-            }*/
+            }
             else if (item == '.')
             {
                 d = new Door(x, y);
@@ -119,14 +119,14 @@ public class Board extends JPanel implements ActionListener{
         world.addAll(walls);
         world.addAll(door);
         world.add(player);
-        //world.addAll(baggs);
+        world.addAll(baggs);
 
         for (int i = 0; i < world.size(); i++)
         {
         	Object item = (Object) world.get(i);
             if ((item instanceof Player) || (item instanceof Door))
             {
-                g.drawImage(item.getImage(), item.x(), item.y(), this);
+                g.drawImage(item.getImage(), item.x() + 2, item.y() + 2, this);
             } 
             else
             {
@@ -163,9 +163,9 @@ public class Board extends JPanel implements ActionListener{
                 if (checkWallCollision(player,LEFT_COLLISION)){               	
                     return;
                 }
-                /*if (checkBagCollision(LEFT_COLLISION)){
+                if (checkBagCollision(LEFT_COLLISION)){
                     return;
-                }*/
+                }
                 player.move(-SPACE, 0);
             } 
             else if (key == KeyEvent.VK_RIGHT)
@@ -173,9 +173,9 @@ public class Board extends JPanel implements ActionListener{
                 if (checkWallCollision(player,RIGHT_COLLISION)){
                     return;
                 }
-                /*if (checkBagCollision(RIGHT_COLLISION)){
+                if (checkBagCollision(RIGHT_COLLISION)){
                     return;
-                }*/
+                }
                 player.move(SPACE, 0);
             } 
             else if (key == KeyEvent.VK_UP)
@@ -183,9 +183,9 @@ public class Board extends JPanel implements ActionListener{
             	if (checkWallCollision(player,TOP_COLLISION)){
                     return;
                 }
-                /*if (checkBagCollision(TOP_COLLISION)){
+                if (checkBagCollision(TOP_COLLISION)){
                     return;
-                }*/
+                }
                 player.move(0, -SPACE);
             } 
             else if (key == KeyEvent.VK_DOWN)
@@ -193,9 +193,9 @@ public class Board extends JPanel implements ActionListener{
                 if (checkWallCollision(player,BOTTOM_COLLISION)){
                     return;
                 }
-                /*if (checkBagCollision(BOTTOM_COLLISION)){
+                if (checkBagCollision(BOTTOM_COLLISION)){
                     return;
-                }*/
+                }
                 player.move(0, SPACE);
             } 
             else if (key == KeyEvent.VK_R)
@@ -253,7 +253,7 @@ public class Board extends JPanel implements ActionListener{
         return false;
     }
 
-    /*private boolean checkIsDoor(int type)
+    private boolean checkBagCollision(int type)
     {
 
         if (type == LEFT_COLLISION) {
@@ -285,7 +285,7 @@ public class Board extends JPanel implements ActionListener{
             for (int i = 0; i < baggs.size(); i++) {
 
                 Baggage bag = (Baggage) baggs.get(i);
-                if (soko.isRightCollision(bag)) {
+                if (player.isRightCollision(bag)) {
                     for (int j=0; j < baggs.size(); j++) {
 
                         Baggage item = (Baggage) baggs.get(j);
@@ -310,7 +310,7 @@ public class Board extends JPanel implements ActionListener{
             for (int i = 0; i < baggs.size(); i++) {
 
                 Baggage bag = (Baggage) baggs.get(i);
-                if (soko.isTopCollision(bag)) {
+                if (player.isTopCollision(bag)) {
                     for (int j = 0; j < baggs.size(); j++) {
 
                         Baggage item = (Baggage) baggs.get(j);
@@ -336,7 +336,7 @@ public class Board extends JPanel implements ActionListener{
             for (int i = 0; i < baggs.size(); i++) {
 
                 Baggage bag = (Baggage) baggs.get(i);
-                if (soko.isBottomCollision(bag)) {
+                if (player.isBottomCollision(bag)) {
                     for (int j = 0; j < baggs.size(); j++) {
 
                         Baggage item = (Baggage) baggs.get(j);
@@ -357,9 +357,9 @@ public class Board extends JPanel implements ActionListener{
         }
 
         return false;
-    }*/
+    }
 
-    /*public void isCompleted() {
+    public void isCompleted() {
 
         int num = baggs.size();
         int compl = 0;
@@ -367,11 +367,10 @@ public class Board extends JPanel implements ActionListener{
         for (int i = 0; i < num; i++) {
             Baggage bag = (Baggage) baggs.get(i);
             for (int j = 0; j < num; j++) {
-                Area area = (Area) door.get(j);
-                if (bag.x() == area.x()
-                        && bag.y() == area.y()) {
-                    compl += 1;
-                }
+                //Area area = (Area) door.get(j);
+                //if (bag.x() == area.x() && bag.y() == area.y()) {
+                //    compl += 1;
+                //}
             }
         }
 
@@ -379,7 +378,7 @@ public class Board extends JPanel implements ActionListener{
             completed = true;
             repaint();
         }
-    }*/
+    }
 
     public void restartLevel()
     {
@@ -392,12 +391,6 @@ public class Board extends JPanel implements ActionListener{
             completed = false;
         }
     }
-
-    @Override
-	public void actionPerformed(ActionEvent e)
-    {
-	
-	}
 
 	
 }
