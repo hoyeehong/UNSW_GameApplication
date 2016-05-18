@@ -12,8 +12,8 @@ import javax.swing.JPanel;
  */
 public class Board extends JPanel{
 	
-    private final int OFFSET = 50;
-    private final int SPACE = 40;
+    private final int OFFSET = 100; //Adjusts the breadth of frame
+    private final int SPACE = 38;
     private final int LEFT_COLLISION = 1;
     private final int RIGHT_COLLISION = 2;
     private final int TOP_COLLISION = 3;

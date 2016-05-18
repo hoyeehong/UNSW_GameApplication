@@ -21,71 +21,61 @@ public class Maze extends JFrame{
 	private void initHomepage()
 	{   	
 		rootPanel = new BackgroundPanel();
+		rootPanel.setBorder(new EmptyBorder(new Insets(250, 250, 390, 200)));
 		
-		BorderLayout layout = new BorderLayout();
-		layout.setHgap(15);
-		layout.setVgap(5);
-		
-		rootPanel.setLayout(layout);
-		rootPanel.setOpaque(false);
-		rootPanel.setBorder(new EmptyBorder(new Insets(250, 321, 250, 321)));
-		
-		JLabel statusBar = new JLabel("Status");
-		statusBar.setBorder(BorderFactory.createEtchedBorder());
-		
-		JButton easyLevel = new JButton("Easy Mode");
-		easyLevel.setBackground(Color.black);
-        easyLevel.setForeground(Color.white);
-        easyLevel.setBorderPainted(false); 		
-		easyLevel.addActionListener(new ActionListener()
+		JButton easyLevelBtn = new JButton("Easy Mode");
+		easyLevelBtn.setBackground(Color.black);
+        easyLevelBtn.setForeground(Color.white);
+        easyLevelBtn.setBorderPainted(false); 		
+		easyLevelBtn.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
 				initMazeUI();      
 			}
 		});
-		
-        JButton mediumLevel = new JButton("Medium Mode");
-        mediumLevel.setBackground(Color.black);
-        mediumLevel.setForeground(Color.white);
-        mediumLevel.setBorderPainted(false);    
-        mediumLevel.addActionListener(new ActionListener()
+		      
+        JButton mediumLevelBtn = new JButton("Medium Mode");
+        mediumLevelBtn.setBackground(Color.black);
+        mediumLevelBtn.setForeground(Color.white);
+        mediumLevelBtn.setBorderPainted(false);    
+        mediumLevelBtn.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
 				initMazeUI();      
 			}
-		});	
+		});
+                
+        JButton hardLevelBtn = new JButton("Hard Mode");
+        hardLevelBtn.setBackground(Color.black);
+        hardLevelBtn.setForeground(Color.white);
+        hardLevelBtn.setBorderPainted(false);      
+        hardLevelBtn.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				initMazeUI();      
+			}
+		});
         
-        JButton hardLevel = new JButton("Hard Mode");
-        hardLevel.setBackground(Color.black);
-        hardLevel.setForeground(Color.white);
-        hardLevel.setBorderPainted(false);      
-        hardLevel.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				initMazeUI();      
-			}
-		});	
-
-		rootPanel.add(easyLevel, BorderLayout.WEST);
-		rootPanel.add(mediumLevel, BorderLayout.CENTER);
-		rootPanel.add(hardLevel, BorderLayout.EAST);
+		rootPanel.add(easyLevelBtn, BorderLayout.EAST);
+		rootPanel.add(mediumLevelBtn, BorderLayout.CENTER);
+		rootPanel.add(hardLevelBtn, BorderLayout.WEST);
 		
 		add(rootPanel);
-		add(statusBar, BorderLayout.SOUTH);
-		
 		pack();        
 	}
 	
 	private void initMazeUI()
 	{
 		Board board = new Board();
-    	add(board);  	
-    	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
-    	setSize(board.getBoardWidth() + OFFSET, board.getBoardHeight() + 2*OFFSET);      	       	
-    	setLocationRelativeTo(null); 	
+    	add(board);  	  	
+    	setSize(board.getBoardWidth() + OFFSET, board.getBoardHeight() + 2*OFFSET);      	       	  	 	
+    	
+    	JLabel scoreBar = new JLabel("Score");
+		scoreBar.setBorder(BorderFactory.createEtchedBorder());
+		add(scoreBar, BorderLayout.SOUTH);
     	rootPanel.setVisible(false);
 	}
 	
@@ -93,8 +83,10 @@ public class Maze extends JFrame{
 	{
 		super("Maze");
 		initHomepage();
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
     }
-	private Image bg;
+	
 	private JPanel rootPanel;
-	private final int OFFSET = 50;
+	private final int OFFSET = 80; //Adjusts the height of frame
 }
