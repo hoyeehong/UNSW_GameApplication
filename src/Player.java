@@ -12,7 +12,7 @@ public class Player extends Object{
 	{
         super(x, y);
 
-        URL loc = this.getClass().getResource("playerIcon.png");
+        URL loc = this.getClass().getResource("playerIcon.jpg");
         ImageIcon startIcon = new ImageIcon(loc);
         Image image = startIcon.getImage();
         this.setImage(image);
