@@ -19,7 +19,7 @@ public class Maze extends JFrame{
 	private void initHomepage()
 	{   	
 		rootPanel = new BackgroundPanel();
-		rootPanel.setBorder(new EmptyBorder(new Insets(250, 250, 390, 200)));
+		rootPanel.setBorder(new EmptyBorder(new Insets(250, 210, 360, 210)));
 		
 		JButton easyLevelBtn = new JButton("Easy Mode");
 		easyLevelBtn.setBackground(Color.black);
@@ -81,17 +81,14 @@ public class Maze extends JFrame{
 	{
     	JLabel scoreBar = new JLabel("Score");
 		scoreBar.setBorder(BorderFactory.createEtchedBorder());
-		add(scoreBar, BorderLayout.SOUTH);
-
+		
 		Board board = new Board(width, height);
-    	add(board);  	
-    	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
-    	setSize(board.getBoardWidth() + OFFSET, board.getBoardHeight() + 2*OFFSET);      	       	
-    	setLocationRelativeTo(null); 	
+		setSize(board.getBoardWidth() + 5*OFFSET, board.getBoardHeight() + 4*OFFSET);
+		add(board);
 
-    	rootPanel.setVisible(false);
+    	rootPanel.setVisible(false);  	
 	}
-	
+		
 	public Maze()
 	{
 		super("Maze");

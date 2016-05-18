@@ -1,7 +1,5 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -12,8 +10,8 @@ import javax.swing.JPanel;
  */
 public class Board extends JPanel{
 	
-    private final int OFFSET = 100; //Adjusts the breadth of frame
-    private final int SPACE = 38;
+    private final int OFFSET = 10; //Adjusts the width of frame
+    private final int SPACE = 26;
     private final int LEFT_COLLISION = 1;
     private final int RIGHT_COLLISION = 2;
     private final int TOP_COLLISION = 3;
@@ -39,7 +37,7 @@ public class Board extends JPanel{
 		
 		addKeyListener(new TAdapter());
         setFocusable(true);
-        initWorld(width, height);
+        initWorld(width, height);		
 	}
 
 	public final void initWorld(int width, int height)
@@ -289,8 +287,7 @@ public class Board extends JPanel{
                                 return true;
                             }
                         }
-                        if (checkWallCollision(bag,
-                                RIGHT_COLLISION)) {
+                        if (checkWallCollision(bag, RIGHT_COLLISION)) {
                             return true;
                         }
                     }
@@ -314,8 +311,7 @@ public class Board extends JPanel{
                                 return true;
                             }
                         }
-                        if (checkWallCollision(bag,
-                                TOP_COLLISION)) {
+                        if (checkWallCollision(bag, TOP_COLLISION)) {
                             return true;
                         }
                     }
@@ -340,8 +336,7 @@ public class Board extends JPanel{
                                 return true;
                             }
                         }
-                        if (checkWallCollision(bag,
-                                BOTTOM_COLLISION)) {
+                        if (checkWallCollision(bag, BOTTOM_COLLISION)) {
                             return true;
                         }
                     }
