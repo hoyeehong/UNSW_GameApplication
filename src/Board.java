@@ -25,33 +25,28 @@ public class Board extends JPanel{
     private Player player;
     private int w = 0;
     private int h = 0;
+    
+    private int width;
+    private int height;
+    
     private boolean completed = false;
 
-    private String level =
-            "###  ### ### \n"
-          + "#@#  # # # # \n"
-          + "# #  # # # # \n"
-          + "# #### ### ##\n"
-          + "#           #\n"
-          + "# ###########\n"
-          + "# # #    ###\n"
-          + "# # # ## #.#####\n"
-          + "#      #       #\n"
-          + "# ### ##########\n"
-          + "#   # #\n"
-          + "#######\n";
-    		
-
     
-	public Board()
+	public Board(int width, int height)
 	{
+		this.width = width;
+		this.height = height;
+		
 		addKeyListener(new TAdapter());
         setFocusable(true);
-        initWorld();
+        initWorld(width, height);
 	}
 
-	public final void initWorld()
-	{      
+	public final void initWorld(int width, int height)
+	{     
+		MazeGen maze = new MazeGen(width,height);
+		String level = maze.generateMaze();
+		
         int x = OFFSET;
         int y = OFFSET;
         
@@ -385,7 +380,7 @@ public class Board extends JPanel{
         door.clear();        
         walls.clear();
         //baggs.clear();
-        initWorld();
+        initWorld(width, height);
         if (completed)
         {
             completed = false;

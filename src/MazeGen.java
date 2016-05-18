@@ -5,68 +5,45 @@ import java.util.Random;
 
 /**
  * @author Annie
- * Works sometimes. Still in progress 
- * Seperate program. Will integrate when it works 100% of the time
  */
 
-public class MazeGen {
+public class MazeGen implements MazeGenerator {
 
 	public MazeGen(int width, int height) {
-		this.width = width;
-		this.height = height;
+		this.width = width + 1;
+		this.height = height + 1;
 
 	}
 
-	public static void main(String[] args) {
-
-
-		MazeGen maze = new MazeGen(40,40);
-		maze.generateMaze();
-	}
-
-	public void generateMaze() {
+	public String generateMaze() {
 
 		char tiles[][] = new char[width][height];
 		int col, row;
-	    int tilesVisited = (width * 9) - 1;
+		int tilesVisited = ((width/ 2) + 1) * ((height/2) + 1) - 2;
+
 		Point p, nextP = null;
 		Random rand = new Random();
 
 		// initialise 
-		for (row = 0; row < width; row ++) {
-			for (col = 0; col < height; col ++) {
-				if (row == 0 || row == width - 1) {
-					tiles[row][col] = WALL;
-				} else if (col == 0 || col == height - 1) {
-					tiles[row][col] = WALL;
-				} else {
-					tiles[row][col] = WALL;
-				}
+		for (row = 0; row < width ; row ++) {
+			for (col = 0; col < height ; col ++) {
+				tiles[row][col] = WALL;
 			}
 		}
 
-		Point start = setPoint();
+
+		Point start = new Point(0,0);
 		tiles[start.x][start.y] = START;
-
-		Point door = setPoint();
-		while ((door.x == start.x && door.y == start.y) || (door.distance(start) == TOO_CLOSE)){
-			door = setPoint();
-			// System.out.println("Tut tut");
-		}
-		System.out.println(door.distance(start));
-		tiles[door.x][door.y] = DOOR;
-
+		Point door = new Point (height - 1, width - 1);
 
 		ArrayList<Point> visited = new ArrayList<Point>();	
 		visited.add(start);
 
-		// while (!visited.isEmpty()) 
 		while (tilesVisited > 0 ){
 
-			// can change order
 			p = visited.remove(visited.size()-1);
 
-			if (!p.equals(door)) {
+			if (p.x != door.x || p.y != door.y) {
 
 				ArrayList<Point> neighbours = new ArrayList<Point>();
 				ArrayList<Point> validNext = new ArrayList<Point>();
@@ -79,54 +56,58 @@ public class MazeGen {
 				// check if neighbours are valid 
 				for (Point point: neighbours) {
 
-					if (point.x < 1 || point.y < 1 ||
-							point.x >= (width - 1) || point.y >= (height - 1)) {
+					if (point.x < 0 || point.y < 0 ||
+							point.x >= width || point.y >= height) {
 
 					} else if (tiles[point.x][point.y] == WALL) {
 						validNext.add(point);
-						
+
 					}
 				}	
-			
+
 				if (!validNext.isEmpty()) {
 					int size = validNext.size();
 					nextP = validNext.get(rand.nextInt(size));
 					visited.add(p);
 					visited.add(nextP);
 					tiles[(nextP.x + p.x)/2][(nextP.y + p.y)/2] = PASSAGE;
-				//	System.out.print("x: " + (nextP.x + p.x));
-				//	System.out.println(" y: " + (nextP.y + p.y));
-				}
-				
-				// System.out.println("Tiles left:" + tilesVisited);
-			} 
-			
 
-			if (tiles[p.x][p.y] == WALL) {
+				}
+
+			} 
+
+			if (tiles[p.x][p.y] == WALL) {			
 				tilesVisited --;
 				tiles[p.x][p.y] = PASSAGE;			
-				// System.out.println("Tiles:" + tilesVisited);
 			}
 		}
 
+		tiles[door.x][door.y] = DOOR;
 
-		// debugging purposes
+		StringBuilder stringBuild = new StringBuilder();
 
-	//	System.out.println("Tiles:" + tilesVisited);
-		System.out.println("Start is at: " + start.x + ", " + start.y);
-		System.out.println("Door is at: " + door.x + ", " + door.y);
-		// print maze in symbol format 
-		for (int rows = 0; rows < width; rows ++) {
+		for (int i = 0; i < width + 2 ; i++) {
+			stringBuild.append("#");
+		}
+		stringBuild.append("\n");
+
+		for (int rows = 0; rows < width; rows ++) {	
+			stringBuild.append("#");
 			for (int cols = 0; cols < height; cols ++) {
-
-				System.out.print(tiles[rows][cols]);
-			}
-			System.out.println();
+				stringBuild.append(tiles[rows][cols]);
+			}	
+			stringBuild.append("#\n");
 		}
-		System.out.println("Door tile: " + tiles[door.x][door.y]);
+
+		for (int i = 0; i < width + 2 ; i++) {
+			stringBuild.append("#");
+		}
+		stringBuild.append("\n");
+
+		String mazeString = stringBuild.toString();
+
+		return mazeString;
 	}
-
-
 
 	private Point setPoint() {
 
@@ -148,11 +129,11 @@ public class MazeGen {
 		return tile;
 	}
 
-	private final static int WALL = '#'; 
-	private final static int PASSAGE = ' ';
-	private final static int START = '@';
-	private final static int DOOR = '.';
-	private final static int TOO_CLOSE = 1;
+	private final static char WALL = '#'; 
+	private final static char PASSAGE = ' ';
+	private final static char START = '@';
+	private final static char DOOR = '.';
+
 
 	private final int width; 
 	private final int height;

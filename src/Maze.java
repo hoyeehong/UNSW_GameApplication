@@ -41,7 +41,7 @@ public class Maze extends JFrame{
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				initMazeUI();      
+				initMazeUI(easySize, easySize);      
 			}
 		});
 		
@@ -53,7 +53,7 @@ public class Maze extends JFrame{
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				initMazeUI();      
+				initMazeUI(mediumSize, mediumSize);      
 			}
 		});	
         
@@ -65,7 +65,7 @@ public class Maze extends JFrame{
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				initMazeUI();      
+				initMazeUI(hardSize, hardSize);      
 			}
 		});	
 
@@ -79,9 +79,9 @@ public class Maze extends JFrame{
 		pack();        
 	}
 	
-	private void initMazeUI()
+	private void initMazeUI(int width, int height)
 	{
-		Board board = new Board();
+		Board board = new Board(width, height);
     	add(board);  	
     	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
     	setSize(board.getBoardWidth() + OFFSET, board.getBoardHeight() + 2*OFFSET);      	       	
@@ -97,4 +97,8 @@ public class Maze extends JFrame{
 	private Image bg;
 	private JPanel rootPanel;
 	private final int OFFSET = 50;
+	
+	private final int easySize = 10;
+	private final int mediumSize = 14;
+	private final int hardSize = 50;
 }
