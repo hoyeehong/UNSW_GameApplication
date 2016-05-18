@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 /**
  * 
- * @author Yeehong
+ * 
  */
 public class Board extends JPanel{
 	
