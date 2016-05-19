@@ -10,7 +10,7 @@ import javax.swing.JPanel;
  */
 public class Board extends JPanel{
 	
-    private final int OFFSET = 10; //Adjusts the width of frame
+    private final int OFFSET = 10; 
     private final int SPACE = 26;
     private final int LEFT_COLLISION = 1;
     private final int RIGHT_COLLISION = 2;
@@ -21,8 +21,8 @@ public class Board extends JPanel{
     private ArrayList baggs = new ArrayList();
     private ArrayList door = new ArrayList();
     private Player player;
-    private int w = 0;
-    private int h = 0;
+    //private int w = 0;
+    //private int h = 0;
     
     private int width;
     private int height;
@@ -37,7 +37,7 @@ public class Board extends JPanel{
 		
 		addKeyListener(new TAdapter());
         setFocusable(true);
-        initWorld(width, height);		
+        initWorld(width, height);	
 	}
 
 	public final void initWorld(int width, int height)
@@ -59,9 +59,9 @@ public class Board extends JPanel{
             if (item == '\n')
             {
                 y += SPACE;
-                if (this.w < x)
+                if (this.width < x)
                 {
-                    this.w = x;
+                    this.width = x;
                 }
                 x = OFFSET;
             } 
@@ -92,15 +92,17 @@ public class Board extends JPanel{
             {
                 x += SPACE;
             }
-            h = y;
+            this.height = y;
         }
     }
 	public int getBoardWidth() {
-        return this.w;
+        return this.width;
+        //return this.w;
     }
 
     public int getBoardHeight() {
-        return this.h;
+    	return this.height;
+    	//return this.h;
     }
 	
     public void buildWorld(Graphics g)

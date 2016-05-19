@@ -10,12 +10,6 @@ import javax.swing.border.EmptyBorder;
  */
 public class Maze extends JFrame{
 
-	public static void main(String[] args)
-	{	
-		Maze maze = new Maze();
-        maze.setVisible(true);      
-	}
-	
 	private void initHomepage()
 	{   	
 		rootPanel = new BackgroundPanel();
@@ -29,7 +23,7 @@ public class Maze extends JFrame{
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				initMazeUI(easySize, easySize);      
+				initMazeUI(easySize, easySize);
 			}
 		});
 		      
@@ -41,7 +35,7 @@ public class Maze extends JFrame{
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				initMazeUI(mediumSize, mediumSize);      
+				initMazeUI(mediumSize, mediumSize);
 			}
 		});
                 
@@ -53,52 +47,79 @@ public class Maze extends JFrame{
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				initMazeUI(hardSize, hardSize);      
+				initMazeUI(hardSize, hardSize);
 			}
 		});
         
-        JButton hardLevel = new JButton("Hard Mode");
-        hardLevel.setBackground(Color.black);
-        hardLevel.setForeground(Color.white);
-        hardLevel.setBorderPainted(false);      
-        hardLevel.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				initMazeUI(hardSize, hardSize);      
-			}
-		});	
-
         rootPanel.add(easyLevelBtn, BorderLayout.EAST);
 		rootPanel.add(mediumLevelBtn, BorderLayout.CENTER);
 		rootPanel.add(hardLevelBtn, BorderLayout.WEST);
 	
 		add(rootPanel);
-		pack();        
+		pack();
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	private void initMazeUI(int width, int height)
+	private void initMazeUI(final int width, final int height)
 	{
-    	JLabel scoreBar = new JLabel("Score");
-		scoreBar.setBorder(BorderFactory.createEtchedBorder());
-		
+    	JLabel scoreText = new JLabel("Score: " /*+getScore()*/); 
+		scoreText.setBorder(BorderFactory.createEtchedBorder());
+		scoreText.setFont(new Font("AR JULIAN", Font.BOLD, 16));
+			
 		Board board = new Board(width, height);
-		setSize(board.getBoardWidth() + 5*OFFSET, board.getBoardHeight() + 4*OFFSET);
+		setSize(board.getBoardWidth() + 7*OFFSET, board.getBoardHeight() + 3*OFFSET);
+	
+		JButton revealPathBtn = new JButton("Reveal Path!");
+		revealPathBtn.setFont(new Font("AR JULIAN", Font.PLAIN, 16));
+		revealPathBtn.setForeground(new Color(253, 254, 254));
+		revealPathBtn.setBackground(new Color(160, 64, 0));
+		revealPathBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		JButton restartBtn = new JButton("Restart Game");
+		restartBtn.setFont(new Font("AR JULIAN", Font.PLAIN, 16));
+		restartBtn.setForeground(new Color(253, 254, 254));
+		restartBtn.setBackground(new Color(160, 64, 0));
+		restartBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		restartBtn.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				maze = new Maze();
+			    maze.setVisible(true); 
+			    dispose();				     
+			}
+		});		
+		
+		JPanel rightPanel = new JPanel();
+		rightPanel.add(revealPathBtn);
+		rightPanel.add(restartBtn);
+		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+	
+		add(scoreText, BorderLayout.NORTH);		
 		add(board);
-
-    	rootPanel.setVisible(false);  	
+		add(rightPanel, BorderLayout.EAST);
+		this.getContentPane().setBackground(new Color(189, 195, 199));
+		
+    	rootPanel.setVisible(false); 	
 	}
 		
+	public static void main(String[] args)
+	{	
+		maze = new Maze();
+        maze.setVisible(true);      
+	}
 	public Maze()
 	{
 		super("Maze");
 		initHomepage();
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
+		this.setFont(new Font("Display", Font.BOLD, 12));
     }
 	
+	private static Maze maze;
 	private JPanel rootPanel;
-	private final int OFFSET = 80; //Adjusts the height of frame
+	private final int OFFSET = 27;
 	
 	private final int easySize = 10;
 	private final int mediumSize = 14;
