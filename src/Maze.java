@@ -120,8 +120,8 @@ public class Maze extends JFrame{
 	private JPanel rootPanel;
 	private final int OFFSET = 27;
 	
-	private final int easySize = 10;
-	private final int mediumSize = 14;
-	private final int hardSize = 50;
+	private final int easySize = 17;
+	private final int mediumSize = 23;
+	private final int hardSize = 41;
 
 }

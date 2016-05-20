@@ -10,15 +10,15 @@ import java.util.Random;
 public class MazeGen implements MazeGenerator {
 
 	public MazeGen(int width, int height) {
-		this.width = width + 1;
-		this.height = height + 1;
+		this.width = width;
+		this.height = height;
 	}
 
 	public String generateMaze() {
 
 		char tiles[][] = new char[width][height];
 		int col, row;
-		int tilesVisited = ((width/2) + 1) * ((height/2) + 1) - 2;
+		int tilesVisited = ((width/2) + 1) * ((height/2) + 1) - 1;
 
 		Point p, nextP = null;
 		Random rand = new Random();
