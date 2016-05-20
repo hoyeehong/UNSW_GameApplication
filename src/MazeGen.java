@@ -12,14 +12,13 @@ public class MazeGen implements MazeGenerator {
 	public MazeGen(int width, int height) {
 		this.width = width + 1;
 		this.height = height + 1;
-
 	}
 
 	public String generateMaze() {
 
 		char tiles[][] = new char[width][height];
 		int col, row;
-		int tilesVisited = ((width/ 2) + 1) * ((height/2) + 1) - 2;
+		int tilesVisited = ((width/2) + 1) * ((height/2) + 1) - 2;
 
 		Point p, nextP = null;
 		Random rand = new Random();
@@ -30,7 +29,6 @@ public class MazeGen implements MazeGenerator {
 				tiles[row][col] = WALL;
 			}
 		}
-
 
 		Point start = new Point(0,0);
 		tiles[start.x][start.y] = START;
@@ -53,15 +51,16 @@ public class MazeGen implements MazeGenerator {
 				neighbours.add(new Point(p.x, p.y + 2));
 				neighbours.add(new Point(p.x, p.y - 2));
 
-				// check if neighbours are valid 
+				// check if neighbors are valid 
 				for (Point point: neighbours) {
 
-					if (point.x < 0 || point.y < 0 ||
-							point.x >= width || point.y >= height) {
-
-					} else if (tiles[point.x][point.y] == WALL) {
+					if (point.x < 0 || point.y < 0 || point.x >= width || point.y >= height)
+					{
+						//do nothing
+					} 
+					else if (tiles[point.x][point.y] == WALL)
+					{
 						validNext.add(point);
-
 					}
 				}	
 
@@ -71,9 +70,7 @@ public class MazeGen implements MazeGenerator {
 					visited.add(p);
 					visited.add(nextP);
 					tiles[(nextP.x + p.x)/2][(nextP.y + p.y)/2] = PASSAGE;
-
 				}
-
 			} 
 
 			if (tiles[p.x][p.y] == WALL) {			
@@ -133,7 +130,6 @@ public class MazeGen implements MazeGenerator {
 	private final static char PASSAGE = ' ';
 	private final static char START = '@';
 	private final static char DOOR = '.';
-
 
 	private final int width; 
 	private final int height;

@@ -5,7 +5,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 /**
- * Creates the main Maze map
+ * Creates the main selection page and proceed to the actual Maze
  *
  */
 public class Maze extends JFrame{
@@ -70,7 +70,7 @@ public class Maze extends JFrame{
 		Board board = new Board(width, height);
 		setSize(board.getBoardWidth() + 7*OFFSET, board.getBoardHeight() + 3*OFFSET);
 	
-		JButton revealPathBtn = new JButton("Reveal Path!");
+		JButton revealPathBtn = new JButton(" Reveal Path! ");
 		revealPathBtn.setFont(new Font("AR JULIAN", Font.PLAIN, 16));
 		revealPathBtn.setForeground(new Color(253, 254, 254));
 		revealPathBtn.setBackground(new Color(160, 64, 0));
@@ -109,7 +109,7 @@ public class Maze extends JFrame{
 	{	
 		maze = new Maze();
         maze.setVisible(true);      
-	}
+	} 
 	public Maze()
 	{
 		super("Maze");
@@ -117,7 +117,7 @@ public class Maze extends JFrame{
 		this.setFont(new Font("Display", Font.BOLD, 12));
     }
 	
-	private static Maze maze;
+	private static  Maze maze;
 	private JPanel rootPanel;
 	private final int OFFSET = 27;
 	

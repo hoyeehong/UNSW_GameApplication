@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 /**
- * 
+ * The actual Maze GUI
  * 
  */
 public class Board extends JPanel{
@@ -44,7 +44,7 @@ public class Board extends JPanel{
 	{     
 		MazeGen maze = new MazeGen(width,height);
 		String level = maze.generateMaze();
-		
+		//System.out.println(level);
         int x = OFFSET;
         int y = OFFSET;
         
