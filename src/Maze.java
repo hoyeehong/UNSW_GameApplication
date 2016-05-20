@@ -114,10 +114,9 @@ public class Maze extends JFrame{
 	{
 		super("Maze");
 		initHomepage();
-		this.setFont(new Font("Display", Font.BOLD, 12));
     }
 	
-	private static  Maze maze;
+	private static Maze maze;
 	private JPanel rootPanel;
 	private final int OFFSET = 27;
 	
