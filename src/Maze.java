@@ -23,7 +23,7 @@ public class Maze extends JFrame{
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				initMazeUI(easySize, easySize);
+				initMazeUI(easySize, easySize, "Easy Mode");
 			}
 		});
 		      
@@ -35,7 +35,7 @@ public class Maze extends JFrame{
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				initMazeUI(mediumSize, mediumSize);
+				initMazeUI(mediumSize, mediumSize, "Medium Mode");
 			}
 		});
                 
@@ -47,7 +47,7 @@ public class Maze extends JFrame{
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				initMazeUI(hardSize, hardSize);
+				initMazeUI(hardSize, hardSize, "Hard Mode");
 			}
 		});
         
@@ -61,28 +61,38 @@ public class Maze extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	private void initMazeUI(final int width, final int height)
+	private void initMazeUI(int width, int height, String mode)
 	{
-    	JLabel scoreText = new JLabel("Score: " /*+getScore()*/); 
+    	JLabel scoreText = new JLabel("  "+mode); 
 		scoreText.setBorder(BorderFactory.createEtchedBorder());
 		scoreText.setFont(new Font("AR JULIAN", Font.BOLD, 16));
 			
-		Board board = new Board(width, height);
+		final Board board = new Board(width, height);
 		setSize(board.getBoardWidth() + 7*OFFSET, board.getBoardHeight() + 3*OFFSET);
 	
-		JButton revealPathBtn = new JButton(" Reveal Path! ");
+		JButton revealPathBtn = new JButton("  Reveal Path  ");
 		revealPathBtn.setFont(new Font("AR JULIAN", Font.PLAIN, 16));
 		revealPathBtn.setForeground(new Color(253, 254, 254));
 		revealPathBtn.setBackground(new Color(160, 64, 0));
 		revealPathBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
-		JButton restartBtn = new JButton("Restart Game");
-		restartBtn.setFont(new Font("AR JULIAN", Font.PLAIN, 16));
-		restartBtn.setForeground(new Color(253, 254, 254));
-		restartBtn.setBackground(new Color(160, 64, 0));
-		restartBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+		revealPathBtn.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{				
+				System.out.println(board.getPlayerX()+"."+board.getPlayerY());
+				//TO DO
+				//Call function to generate search
+			}
+		});	
 		
-		restartBtn.addActionListener(new ActionListener()
+		JButton changeModeBtn = new JButton("Change Mode");
+		changeModeBtn.setFont(new Font("AR JULIAN", Font.PLAIN, 16));
+		changeModeBtn.setForeground(new Color(253, 254, 254));
+		changeModeBtn.setBackground(new Color(160, 64, 0));
+		changeModeBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		changeModeBtn.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
@@ -90,11 +100,29 @@ public class Maze extends JFrame{
 			    maze.setVisible(true); 
 			    dispose();				     
 			}
-		});		
+		});
 		
+		/*JButton restartGameBtn = new JButton("Restart Game");
+		restartGameBtn.setFont(new Font("AR JULIAN", Font.PLAIN, 16));
+		restartGameBtn.setForeground(new Color(253, 254, 254));
+		restartGameBtn.setBackground(new Color(160, 64, 0));
+		restartGameBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		restartGameBtn.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				board.setVisible(false);	
+				Board newBoard = new Board(width, height);
+				newBoard.setVisible(true);
+				add(newBoard);
+			}
+		});*/
+	
 		JPanel rightPanel = new JPanel();
 		rightPanel.add(revealPathBtn);
-		rightPanel.add(restartBtn);
+		rightPanel.add(changeModeBtn);
+		//rightPanel.add(restartGameBtn);
 		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
 	
 		add(scoreText, BorderLayout.NORTH);		
@@ -117,6 +145,7 @@ public class Maze extends JFrame{
     }
 	
 	private static Maze maze;
+	
 	private JPanel rootPanel;
 	private final int OFFSET = 27;
 	
