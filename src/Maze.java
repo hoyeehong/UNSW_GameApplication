@@ -150,7 +150,7 @@ public class Maze extends JFrame{
 	private final int OFFSET = 27;
 	
 	private final int easySize = 17;
-	private final int mediumSize = 23;
-	private final int hardSize = 41;
+	private final int mediumSize = 25;
+	private final int hardSize = 35;
 
 }
