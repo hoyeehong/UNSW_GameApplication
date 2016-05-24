@@ -20,8 +20,8 @@ public class Player extends Object{
 
     public void move(int x, int y)
     {
-        int nx = this.x() + x;
-        int ny = this.y() + y;
+        int nx = this.getX() + x;
+        int ny = this.getY() + y;
         this.setX(nx);
         this.setY(ny);
     }
