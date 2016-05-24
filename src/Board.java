@@ -52,7 +52,7 @@ public class Board extends JPanel{
         int y = OFFSET;
         
         Wall wall; 
-        Baggage b;
+        //Baggage b;
 
         for (int i = 0; i < generatedMaze.length(); i++)
         {
