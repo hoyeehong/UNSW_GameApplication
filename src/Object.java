@@ -25,11 +25,11 @@ public class Object{
 	 {        	
 		 image = img;    
 	 }    
-	 public int x()	   
+	 public int getX()	   
 	 {	        
 		 return this.x;    
 	 }  
-	 public int y()	    
+	 public int getY()	    
 	 {	       
 		 return this.y;	    
 	 }	    
@@ -44,7 +44,7 @@ public class Object{
 	 
 	 public boolean isLeftCollision(Object character)	    
 	 {	        
-		 if(((this.x() - SPACE) == character.x()) && (this.y() == character.y()))	        
+		 if(((this.getX() - SPACE) == character.getX()) && (this.getY() == character.getY()))	        
 		 {
 			 return true;        
 		 } 	        
@@ -56,7 +56,7 @@ public class Object{
     
 	 public boolean isRightCollision(Object character)
 	 {       
-		 if (((this.x() + SPACE) == character.x()) && (this.y() == character.y()))        
+		 if (((this.getX() + SPACE) == character.getX()) && (this.getY() == character.getY()))        
 		 {            	
 			 return true;       
 		 } 	        
@@ -68,7 +68,7 @@ public class Object{
 	    
 	 public boolean isTopCollision(Object character)
 	 {       
-		 if (((this.y() - SPACE) == character.y()) && (this.x() == character.x()))        
+		 if (((this.getY() - SPACE) == character.getY()) && (this.getX() == character.getX()))        
 		 {            
 			 return true;        
 		 }         
@@ -80,7 +80,7 @@ public class Object{
 	    
 	 public boolean isBottomCollision(Object character) 	    
 	 {	        
-		 if(((this.y() + SPACE) == character.y()) && (this.x() == character.x()))	        
+		 if(((this.getY() + SPACE) == character.getY()) && (this.getX() == character.getX()))	        
 		 {	            
 			 return true;	        
 		 } 	        
