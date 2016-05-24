@@ -11,7 +11,7 @@ public class Door extends Object{
 	{	        
 		super(x, y);
 	        
-		URL loc = this.getClass().getResource("door.png");	        
+		URL loc = this.getClass().getResource("images/door.png");	        
 		ImageIcon door = new ImageIcon(loc);        
 		Image image = door.getImage();        
 		this.setImage(image);	    

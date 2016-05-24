@@ -14,7 +14,7 @@ public class Wall extends Object{
     {
         super(x, y);
 
-        URL loc = this.getClass().getResource("wall.png");
+        URL loc = this.getClass().getResource("images/wall.png");
         ImageIcon wall = new ImageIcon(loc);
         image = wall.getImage();
         this.setImage(image);
