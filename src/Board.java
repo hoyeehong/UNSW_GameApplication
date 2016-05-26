@@ -20,18 +20,18 @@ public class Board extends JPanel{
     private final int BOTTOM_COLLISION = 4;
 
     private LinkedList<Object> walls = new LinkedList<Object>();
+    private LinkedList<Object> paths = new LinkedList<Object>();
     private Door door;
     private Player player;
-    //private int w = 0;
-    //private int h = 0;   
+     
     private int width;
     private int height;
-    
-    private String generatedMaze;
+ 
     private int currentX;
     private int currentY;
-    
+      
     private boolean completed = false;
+    
     
 	public Board(int width, int height)
 	{
@@ -42,18 +42,23 @@ public class Board extends JPanel{
         setFocusable(true);
         initWorld(width, height);	
 	}
+
+	public LinkedList<Object> getBoardPath(){
+		return this.paths;
+	}
 	
 	public void initWorld(int width, int height)
 	{     
 		MazeGen maze = new MazeGen(width,height);
-		generatedMaze = maze.generateMaze();
-		//System.out.println(generatedMaze);
+		
+		String generatedMaze = maze.generateMaze();
+		
         int x = OFFSET;
         int y = OFFSET;
         
-        Wall wall; 
+        Wall wall;
+        Path path;
         
-
         for (int i = 0; i < generatedMaze.length(); i++)
         {
             char item = generatedMaze.charAt(i);
@@ -70,6 +75,12 @@ public class Board extends JPanel{
             {
                 wall = new Wall(x, y);
                 walls.add(wall);
+                x += SPACE;
+            }
+            else if (item == 'x')
+            {
+                path = new Path(x, y);
+                paths.add(path);
                 x += SPACE;
             }
             else if (item == '.')
@@ -91,12 +102,9 @@ public class Board extends JPanel{
     }
 	public int getBoardWidth() {
         return this.width;
-        //return this.w;
     }
-
     public int getBoardHeight() {
     	return this.height;
-    	//return this.h;
     }    
     public int getPlayerX()
 	{
@@ -121,13 +129,14 @@ public class Board extends JPanel{
 
         LinkedList<Object> world = new LinkedList<Object>();
         world.addAll(walls);
+        world.addAll(paths);
         world.add(door);
         world.add(player);
 
         for (int i = 0; i < world.size(); i++)
         {
         	Object item = (Object) world.get(i);
-            if ((item instanceof Player) || (item instanceof Door))
+            if ((item instanceof Player)||(item instanceof Door)||(item instanceof Path))
             {
                 g.drawImage(item.getImage(), item.getX() + 2, item.getY() + 2, this);
             } 
@@ -156,8 +165,7 @@ public class Board extends JPanel{
         public void keyPressed(KeyEvent e)
         {
             if (completed)
-            {
-            	
+            {          	
                 return;
             }        
             int key = e.getKeyCode();

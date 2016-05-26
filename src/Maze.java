@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.net.URL;
+import java.util.LinkedList;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -76,13 +78,31 @@ public class Maze extends JFrame{
 		revealPathBtn.setBackground(new Color(160, 64, 0));
 		revealPathBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
-		revealPathBtn.addActionListener(new ActionListener()
+		revealPathBtn.addMouseListener(new MouseAdapter()
 		{
-			public void actionPerformed(ActionEvent e)
+			public void mouseClicked(MouseEvent e)
+			{	
+				URL loc = this.getClass().getResource("images/path.jpg");
+		        ImageIcon wall = new ImageIcon(loc);
+		        Image image = wall.getImage();
+		        	        
+				LinkedList<Object> path = board.getBoardPath();
+				for(Object o : path){
+					o.setImage(image);
+					repaint();
+				}		    
+			}
+		});
+		revealPathBtn.addMouseListener(new MouseAdapter()
+		{
+			public void mouseExited(MouseEvent e)
 			{				
-				System.out.println(board.getPlayerX()+"."+board.getPlayerY());
-				//TO DO
-				//Call function to generate search
+				LinkedList<Object> path = board.getBoardPath();
+				for(Object o : path)
+				{
+					o.setImage(null);
+					repaint();
+				}		    	
 			}
 		});	
 		
@@ -101,28 +121,10 @@ public class Maze extends JFrame{
 			    dispose();				     
 			}
 		});
-		
-		/*JButton restartGameBtn = new JButton("Restart Game");
-		restartGameBtn.setFont(new Font("AR JULIAN", Font.PLAIN, 16));
-		restartGameBtn.setForeground(new Color(253, 254, 254));
-		restartGameBtn.setBackground(new Color(160, 64, 0));
-		restartGameBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-		
-		restartGameBtn.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				board.setVisible(false);	
-				Board newBoard = new Board(width, height);
-				newBoard.setVisible(true);
-				add(newBoard);
-			}
-		});*/
 	
 		JPanel rightPanel = new JPanel();
 		rightPanel.add(revealPathBtn);
 		rightPanel.add(changeModeBtn);
-		//rightPanel.add(restartGameBtn);
 		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
 	
 		add(scoreText, BorderLayout.NORTH);		

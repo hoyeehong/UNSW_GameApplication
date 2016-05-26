@@ -1,21 +1,8 @@
 import java.awt.Image;
 /**
- * 
- * @author Yeehong
- *
+ * The parent class for Wall/Player/Path/Door
  */
 public class Object{
-	 private final int SPACE = 26;
-	    
-	 private int x;	  
-	 private int y;	    
-	 private Image image;
-	    
-	 public Object(int x, int y)	    
-	 {	        
-		 this.x = x;	        
-		 this.y = y;    
-	 }
 	 
 	 public Image getImage()    
 	 {	        
@@ -89,5 +76,16 @@ public class Object{
 			 return false;	        
 		 }    
 	 }
+	   
+	 public Object(int x, int y)	    
+	 {	        
+		 this.x = x;	        
+		 this.y = y;    
+	 }
+	 
+	 private final int SPACE = 26;	    
+	 private int x;	  
+	 private int y;	    
+	 private Image image;
 
 }
