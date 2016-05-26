@@ -17,5 +17,4 @@ public class Path extends Object{
     }
 
     private Image image;
-
 }

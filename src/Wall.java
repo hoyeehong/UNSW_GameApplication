@@ -3,7 +3,6 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 /**
  * Wall Object
- *
  */
 public class Wall extends Object{
 		
@@ -18,5 +17,4 @@ public class Wall extends Object{
     }
 
     private Image image;
-
 }

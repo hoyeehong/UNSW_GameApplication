@@ -22,6 +22,7 @@ public class Node {
 	{
 		return listOfEdges;
 	}
+	
 	@Override
 	public String toString()
 	{

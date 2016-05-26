@@ -87,5 +87,4 @@ public class Object{
 	 private int x;	  
 	 private int y;	    
 	 private Image image;
-
 }

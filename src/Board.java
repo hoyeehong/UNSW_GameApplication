@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 /**
  * The actual Maze GUI
- * 
  */
 public class Board extends JPanel{
 	

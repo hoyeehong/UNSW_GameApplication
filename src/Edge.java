@@ -17,7 +17,6 @@ public class Edge {
 	{
 		return nodeFrom.getCoordinates()+"->"+toNode.getCoordinates();
 	}
-
 	public Edge(Node nodeFrom, Node toNode)
 	{
 		this.nodeFrom = nodeFrom;

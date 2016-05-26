@@ -1,7 +1,6 @@
 import java.util.LinkedList;
 /**
  * Breadth-First Searching
- *
  */
 public class BFS {
 

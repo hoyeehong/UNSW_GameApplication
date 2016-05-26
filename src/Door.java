@@ -3,7 +3,6 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 /**
  * Door Object
- *
  */
 public class Door extends Object{	
 	public Door(int x, int y)

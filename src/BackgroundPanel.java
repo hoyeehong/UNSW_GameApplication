@@ -2,7 +2,6 @@ import java.awt.*;
 import javax.swing.*;
 /**
  * The background image for welcome page.
- *
  */
 public class BackgroundPanel extends JPanel{
 	Image image;

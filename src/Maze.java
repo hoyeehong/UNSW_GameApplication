@@ -5,7 +5,6 @@ import java.util.LinkedList;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 /**
  * Creates the main selection page and proceed to the actual Maze
  */

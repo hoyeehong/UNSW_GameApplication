@@ -3,7 +3,6 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 /**
  * Player Object
- *
  */
 public class Player extends Object{
 
