@@ -8,7 +8,6 @@ import javax.swing.border.EmptyBorder;
 
 /**
  * Creates the main selection page and proceed to the actual Maze
- *
  */
 public class Maze extends JFrame{
 
