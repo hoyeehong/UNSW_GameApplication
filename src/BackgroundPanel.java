@@ -5,7 +5,8 @@ import javax.swing.*;
  */
 public class BackgroundPanel extends JPanel{
 	private Image image;
-	  public BackgroundPanel()
+	  
+	public BackgroundPanel()
 	  {
 	    try
 	    {

@@ -12,6 +12,7 @@ public class MazeGen implements MazeGenerator {
 
 		char tiles[][] = new char[width][height];
 		int col, row;
+		// remove one as start tile is not included
 		int tilesVisited = ((width/2) + 1) * ((height/2) + 1) - 1;
 
 		Point p, nextP = null;
