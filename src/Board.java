@@ -11,52 +11,16 @@ import javax.swing.JPanel;
  */
 public class Board extends JPanel{
 	
-    private final int OFFSET = 10; 
-    private final int SPACE = 26;
-    private final int LEFT_COLLISION = 1;
-    private final int RIGHT_COLLISION = 2;
-    private final int TOP_COLLISION = 3;
-    private final int BOTTOM_COLLISION = 4;
-
-    private LinkedList<Object> walls = new LinkedList<Object>();
-    private LinkedList<Object> paths = new LinkedList<Object>();
-    private Door door;
-    private Player player;
-     
-    private int width;
-    private int height;
- 
-    private int currentX;
-    private int currentY;
-      
-    private boolean completed = false;
-    
-    
-	public Board(int width, int height)
-	{
-		this.width = width;
-		this.height = height;
-		
-		addKeyListener(new TAdapter());
-        setFocusable(true);
-        initWorld(width, height);	
-	}
-
-	public LinkedList<Object> getBoardPath(){
-		return this.paths;
-	}
-	
 	public void initWorld(int width, int height)
 	{     
-		MazeGen maze = new MazeGen(width,height);
-		
+		MazeGen maze = new MazeGen(width,height);	
 		String generatedMaze = maze.generateMaze();
 		
         int x = OFFSET;
         int y = OFFSET;
         
         Wall wall;
-        Path path;
+        Path searchedPath;
         
         for (int i = 0; i < generatedMaze.length(); i++)
         {
@@ -78,8 +42,8 @@ public class Board extends JPanel{
             }
             else if (item == 'x')
             {
-                path = new Path(x, y);
-                paths.add(path);
+                searchedPath = new Path(x, y);
+                paths.add(searchedPath);
                 x += SPACE;
             }
             else if (item == '.')
@@ -99,28 +63,7 @@ public class Board extends JPanel{
             this.height = y;
         }
     }
-	public int getBoardWidth() {
-        return this.width;
-    }
-    public int getBoardHeight() {
-    	return this.height;
-    }    
-    public int getPlayerX()
-	{
-		return this.currentX;
-	}
-	public int getPlayerY()
-	{
-		return this.currentY;
-	}
-	public void setGameStatus(boolean status)
-	{
-		if(this.completed = true)
-		{
-			this.completed = status;
-		}
-	}
-	
+
     public void buildWorld(Graphics g)
     {
         g.setColor(new Color(255,255,255));
@@ -178,8 +121,6 @@ public class Board extends JPanel{
                 	return;
                 }
                 player.move(-SPACE, 0);
-                currentX = player.getX();
-                currentY = player.getY();
             } 
             else if (key == KeyEvent.VK_RIGHT)
             {
@@ -191,8 +132,6 @@ public class Board extends JPanel{
                 	return;
                 }
                 player.move(SPACE, 0);
-                currentX = player.getX();
-                currentY = player.getY();
             } 
             else if (key == KeyEvent.VK_UP)
             {            
@@ -201,12 +140,9 @@ public class Board extends JPanel{
                 }
                 if (checkDoorCollision(TOP_COLLISION)){
                 	JOptionPane.showMessageDialog(null, "You have completed the Maze!", "Congratulations", JOptionPane.INFORMATION_MESSAGE);
-                	return;
-                	
+                	return;               	
                 }
                 player.move(0, -SPACE);
-                currentX = player.getX();
-                currentY = player.getY();
             } 
             else if (key == KeyEvent.VK_DOWN)
             {
@@ -218,8 +154,6 @@ public class Board extends JPanel{
                 	return;
                 }
                 player.move(0, SPACE);
-                currentX = player.getX();
-                currentY = player.getY();
             } 
             else if (key == KeyEvent.VK_R)
             {
@@ -328,6 +262,48 @@ public class Board extends JPanel{
         }
     }
 
+    public LinkedList<Object> getBoardPath()
+    {
+		return this.paths;
+	}
+    
+    public int getBoardWidth()
+    {
+        return this.width;
+    }
+    public int getBoardHeight()
+    {
+    	return this.height;
+    }    
+ 
+	public Board(int width, int height)
+	{
+		this.width = width;
+		this.height = height;
+		
+		addKeyListener(new TAdapter());
+        setFocusable(true);
+        initWorld(width, height);	
+	}
+	
+	private final int OFFSET = 10; 
+    private final int SPACE = 26;
+    private final int LEFT_COLLISION = 1;
+    private final int RIGHT_COLLISION = 2;
+    private final int TOP_COLLISION = 3;
+    private final int BOTTOM_COLLISION = 4;
+
+    private LinkedList<Object> walls = new LinkedList<Object>();
+    private LinkedList<Object> paths = new LinkedList<Object>();
+    private Door door;
+    private Player player;
+     
+    private int width;
+    private int height;
+      
+    private boolean completed = false;
+    
+    
 	
 }
 

@@ -3,26 +3,26 @@
  */
 public class Edge {
 
-	public Node getNodeFrom()
+	public Node getPointFrom()
 	{
-		return nodeFrom;
+		return pointFrom;
 	}
-	public Node getToNode()
+	public Node getToPoint()
 	{
-		return toNode;
+		return toPoint;
 	}
 	
 	@Override
 	public String toString()
 	{
-		return nodeFrom.getCoordinates()+"->"+toNode.getCoordinates();
+		return pointFrom.getCoordinates()+"->"+toPoint.getCoordinates();
 	}
 	public Edge(Node nodeFrom, Node toNode)
 	{
-		this.nodeFrom = nodeFrom;
-		this.toNode = toNode;
+		this.pointFrom = nodeFrom;
+		this.toPoint = toNode;
 	}
 	
-	private Node nodeFrom;
-	private Node toNode;
+	private Node pointFrom;
+	private Node toPoint;
 }

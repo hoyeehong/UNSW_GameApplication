@@ -94,12 +94,11 @@ public class MazeGen implements MazeGenerator {
 			if(tiles[n.getNodeX()][n.getNodeY()] != START &&
 				tiles[n.getNodeX()][n.getNodeY()] != DOOR)
 			{
-				tiles[n.getNodeX()][n.getNodeY()] = PATH;				
+				tiles[n.getNodeX()][n.getNodeY()] = SEARCHED_PATH;				
 			}
 		}
 		
 		StringBuilder stringBuild = new StringBuilder();
-
 		for (int i = 0; i < width + 2 ; i++) {
 			stringBuild.append("#");
 		}
@@ -125,11 +124,9 @@ public class MazeGen implements MazeGenerator {
 	private LinkedList<Node> generatePath(Point start, Point door)
 	{
 		Node startNode = new Node(start.x, start.y);
-		Node doorNode = new Node(door.x, door.y);
-		
+		Node doorNode = new Node(door.x, door.y);	
 		BFS bfs = new BFS(graph);
 		LinkedList<Node> path = bfs.findPath(startNode, doorNode);
-
 		return path;
 	}
 		
@@ -207,7 +204,7 @@ public class MazeGen implements MazeGenerator {
 	private final static char PASSAGE = ' ';
 	private final static char START = '@';
 	private final static char DOOR = '.';
-	private final static char PATH = 'x';
+	private final static char SEARCHED_PATH = 'x';
 	
 	private final int width; 
 	private final int height;

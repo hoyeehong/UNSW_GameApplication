@@ -29,7 +29,7 @@ public class Node {
 		StringBuffer str = new StringBuffer();
 		str.append(getNodeX()+","+getNodeY()+":\n");
 		for(Edge e: listOfEdges){
-			str.append("\t-> "+e.getToNode().getNodeX()+","+e.getToNode().getNodeY()+"\n");
+			str.append("\t-> "+e.getToPoint().getNodeX()+","+e.getToPoint().getNodeY()+"\n");
 		}
 		return str.toString();
 	}

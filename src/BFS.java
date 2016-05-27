@@ -4,54 +4,53 @@ import java.util.LinkedList;
  */
 public class BFS {
 
-	public LinkedList<Node> findPath(Node nodeStart, Node nodeFinish)
+	public LinkedList<Node> findPath(Node startPoint, Node door)
 	{
-		LinkedList<Node> nodesVisited = new LinkedList<Node>();
-		LinkedList<Node> nodesToVisit = new LinkedList<Node>();
-		LinkedList<Node> parent = new LinkedList<Node>();
-		LinkedList<Node> parentVisited = new LinkedList<Node>();
+		LinkedList<Node> nodesVisitedList = new LinkedList<Node>();
+		LinkedList<Node> nodesToVisitList = new LinkedList<Node>();
+		LinkedList<Node> parentList = new LinkedList<Node>();
+		LinkedList<Node> parentVisitedList = new LinkedList<Node>();
 
 		if(allNodes.size()>0)
 		{
 			Node rootNode = allNodes.get(0);
-			nodesToVisit.add(rootNode);
-			parent.add(rootNode);
+			nodesToVisitList.add(rootNode);
+			parentList.add(rootNode);
 				
-			Node current = rootNode;
-			Node parentTemp = current;
-			while(!nodesToVisit.isEmpty() && !nodesVisited.contains(graph.findNode(nodeFinish)))
+			Node currentPoint = rootNode;
+			Node parentTemp = currentPoint;
+			while(!nodesToVisitList.isEmpty() && !nodesVisitedList.contains(graph.findNode(door)))
 			{
-				current = nodesToVisit.remove();
-				nodesVisited.add(current);
+				currentPoint = nodesToVisitList.remove();
+				nodesVisitedList.add(currentPoint);
 						
-				parentTemp = parent.remove();
-				parentVisited.add(parentTemp);
+				parentTemp = parentList.remove();
+				parentVisitedList.add(parentTemp);
 	
-				LinkedList<Edge> toAdd = current.getEdgesFromList();
+				LinkedList<Edge> toAdd = currentPoint.getEdgesFromList();
 	
 				for (Edge e : toAdd) 
 				{
-					if (!nodesVisited.contains(e.getToNode()) && !nodesToVisit.contains(e.getToNode()))
+					if (!nodesVisitedList.contains(e.getToPoint()) && !nodesToVisitList.contains(e.getToPoint()))
 					{
-						nodesToVisit.addLast(e.getToNode());
-						parent.addLast(current);
+						nodesToVisitList.addLast(e.getToPoint());
+						parentList.addLast(currentPoint);
 					}
 				}
-				if (nodesVisited.contains(graph.findNode(nodeFinish)))
+				if (nodesVisitedList.contains(graph.findNode(door)))
 				{				
 					LinkedList<Node> path = new LinkedList<Node>();						
-					current	= graph.findNode(nodeFinish);
-					path.addFirst(current);
-					int index = nodesVisited.indexOf(current);
-					Node currentParent = parentVisited.get(index);
-					while (current != currentParent)
+					currentPoint = graph.findNode(door);
+					path.addFirst(currentPoint);
+					int index = nodesVisitedList.indexOf(currentPoint);
+					Node currentPointParent = parentVisitedList.get(index);
+					while (currentPoint != currentPointParent)
 					{
-						current = currentParent;
-						index = nodesVisited.indexOf(current);
-						currentParent = parentVisited.get(index);
-						path.addFirst(current);
+						currentPoint = currentPointParent;
+						index = nodesVisitedList.indexOf(currentPoint);
+						currentPointParent = parentVisitedList.get(index);
+						path.addFirst(currentPoint);
 					}					
-					//printNodes("FINAL: ", path);
 					return path;
 				}
 			}

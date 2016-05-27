@@ -2,7 +2,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.net.URL;
 import java.util.LinkedList;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 /**
@@ -83,7 +82,7 @@ public class Maze extends JFrame{
 		revealPathBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
 		revealPathBtn.setOpaque(true);
 		revealPathBtn.setBorderPainted(false);
-		revealPathBtn.setToolTipText("Click this for cheating");
+		revealPathBtn.setToolTipText("Click this for cheats");
 		revealPathBtn.addMouseListener(new MouseAdapter()
 		{
 			public void mouseClicked(MouseEvent e)
@@ -119,7 +118,7 @@ public class Maze extends JFrame{
 		changeModeBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    changeModeBtn.setOpaque(true);
 		changeModeBtn.setBorderPainted(false);
-		changeModeBtn.setToolTipText("Click this if you want to change to another mode");
+		changeModeBtn.setToolTipText("Click this if you want to change to other modes");
 		changeModeBtn.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
@@ -138,8 +137,7 @@ public class Maze extends JFrame{
 		add(scoreText, BorderLayout.NORTH);		
 		add(board);
 		add(rightPanel, BorderLayout.EAST);
-		this.getContentPane().setBackground(new Color(189, 195, 199));
-		
+		this.getContentPane().setBackground(new Color(189, 195, 199));	
     	rootPanel.setVisible(false); 	
 	}
 		
