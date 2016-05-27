@@ -191,12 +191,6 @@ public class MazeGen implements MazeGenerator {
 		this.width = width;
 		this.height = height;
 	}
-
-	public static void main(String[] args){
-		/*MazeGen mazeTesting = new MazeGen(11,11);
-		String output = mazeTesting.generateMaze();
-		System.out.println(output);*/
-	}
 	
 	private static MazeGraph graph;
 	

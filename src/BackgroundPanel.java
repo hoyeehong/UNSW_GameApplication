@@ -4,7 +4,7 @@ import javax.swing.*;
  * The background image for welcome page.
  */
 public class BackgroundPanel extends JPanel{
-	Image image;
+	private Image image;
 	  public BackgroundPanel()
 	  {
 	    try
