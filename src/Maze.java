@@ -88,11 +88,10 @@ public class Maze extends JFrame{
 				for(Object o : path){
 					o.setImage(image);
 					repaint();
+					board.requestFocusInWindow();
 				}		    
 			}
-		});
-		revealPathBtn.addMouseListener(new MouseAdapter()
-		{
+
 			public void mouseExited(MouseEvent e)
 			{				
 				LinkedList<Object> path = board.getBoardPath();
@@ -100,6 +99,7 @@ public class Maze extends JFrame{
 				{
 					o.setImage(null);
 					repaint();
+					board.requestFocusInWindow();
 				}		    	
 			}
 		});	
