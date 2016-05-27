@@ -21,5 +21,4 @@ public class BackgroundPanel extends JPanel{
 	    if (image != null)
 	      g.drawImage(image, 0,0,this.getWidth(),this.getHeight(),this);
 	  }
-
 }

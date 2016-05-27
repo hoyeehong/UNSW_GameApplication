@@ -180,7 +180,6 @@ public class Board extends JPanel{
                 player.move(-SPACE, 0);
                 currentX = player.getX();
                 currentY = player.getY();
-                System.out.println("x:"+currentX+" y:"+currentY);
             } 
             else if (key == KeyEvent.VK_RIGHT)
             {
@@ -194,7 +193,6 @@ public class Board extends JPanel{
                 player.move(SPACE, 0);
                 currentX = player.getX();
                 currentY = player.getY();
-                System.out.println("x:"+currentX+" y:"+currentY);
             } 
             else if (key == KeyEvent.VK_UP)
             {            
@@ -209,7 +207,6 @@ public class Board extends JPanel{
                 player.move(0, -SPACE);
                 currentX = player.getX();
                 currentY = player.getY();
-                System.out.println("x:"+currentX+" y:"+currentY);
             } 
             else if (key == KeyEvent.VK_DOWN)
             {
@@ -223,7 +220,6 @@ public class Board extends JPanel{
                 player.move(0, SPACE);
                 currentX = player.getX();
                 currentY = player.getY();
-                System.out.println("x:"+currentX+" y:"+currentY);
             } 
             else if (key == KeyEvent.VK_R)
             {
@@ -288,7 +284,6 @@ public class Board extends JPanel{
         	{
         		completed = true;
                 repaint();
-                System.out.println("Completed!");
         		return true;       		 
         	}
         }                 
@@ -298,7 +293,6 @@ public class Board extends JPanel{
         	{     
         		completed = true;
                 repaint();
-                System.out.println("Completed!");
         		return true;     		                        		                                
         	}  
         }        
@@ -308,7 +302,6 @@ public class Board extends JPanel{
         	{   
         		completed = true;
                 repaint();
-                System.out.println("Completed!");
         		return true;       		                     	  	
         	}  
         }        
@@ -318,7 +311,6 @@ public class Board extends JPanel{
         	{ 
         		completed = true;
                 repaint();
-                System.out.println("Completed!");
         		return true;     		                              		             
         	}   
         }
