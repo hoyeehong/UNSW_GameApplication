@@ -174,7 +174,7 @@ public class Board extends JPanel{
                     return;
                 }
                 if (checkDoorCollision(LEFT_COLLISION)){ 
-                	JOptionPane.showMessageDialog(null, "You have completed the Maze!", "Congratulation", JOptionPane.INFORMATION_MESSAGE);
+                	JOptionPane.showMessageDialog(null, "You have completed the Maze!", "Congratulations", JOptionPane.INFORMATION_MESSAGE);
                 	return;
                 }
                 player.move(-SPACE, 0);
@@ -188,7 +188,7 @@ public class Board extends JPanel{
                     return;
                 }
                 if (checkDoorCollision(RIGHT_COLLISION)){
-                	JOptionPane.showMessageDialog(null, "You have completed the Maze!", "Congratulation", JOptionPane.INFORMATION_MESSAGE);
+                	JOptionPane.showMessageDialog(null, "You have completed the Maze!", "Congratulations", JOptionPane.INFORMATION_MESSAGE);
                 	return;
                 }
                 player.move(SPACE, 0);
@@ -202,7 +202,7 @@ public class Board extends JPanel{
                     return;
                 }
                 if (checkDoorCollision(TOP_COLLISION)){
-                	JOptionPane.showMessageDialog(null, "You have completed the Maze!", "Congratulation", JOptionPane.INFORMATION_MESSAGE);
+                	JOptionPane.showMessageDialog(null, "You have completed the Maze!", "Congratulations", JOptionPane.INFORMATION_MESSAGE);
                 	return;
                 	
                 }
@@ -217,7 +217,7 @@ public class Board extends JPanel{
                     return;
                 }
                 if (checkDoorCollision(BOTTOM_COLLISION)){
-                	JOptionPane.showMessageDialog(null, "You have completed the Maze!", "Congratulation", JOptionPane.INFORMATION_MESSAGE);
+                	JOptionPane.showMessageDialog(null, "You have completed the Maze!", "Congratulations", JOptionPane.INFORMATION_MESSAGE);
                 	return;
                 }
                 player.move(0, SPACE);

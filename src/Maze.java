@@ -19,6 +19,7 @@ public class Maze extends JFrame{
 		easyLevelBtn.setFont(new Font("AR JULIAN", Font.PLAIN, 16));
 		easyLevelBtn.setBackground(Color.white);
         easyLevelBtn.setForeground(Color.black);
+        easyLevelBtn.setOpaque(true); 
         easyLevelBtn.setBorderPainted(false); 		
 		easyLevelBtn.addActionListener(new ActionListener()
 		{
@@ -32,6 +33,7 @@ public class Maze extends JFrame{
         mediumLevelBtn.setFont(new Font("AR JULIAN", Font.PLAIN, 16));
         mediumLevelBtn.setBackground(Color.white);
         mediumLevelBtn.setForeground(Color.black);
+        mediumLevelBtn.setOpaque(true);
         mediumLevelBtn.setBorderPainted(false);    
         mediumLevelBtn.addActionListener(new ActionListener()
 		{
@@ -45,6 +47,7 @@ public class Maze extends JFrame{
         hardLevelBtn.setFont(new Font("AR JULIAN", Font.PLAIN, 16));
         hardLevelBtn.setBackground(Color.white);
         hardLevelBtn.setForeground(Color.black);
+        hardLevelBtn.setOpaque(true);
         hardLevelBtn.setBorderPainted(false);      
         hardLevelBtn.addActionListener(new ActionListener()
 		{
@@ -78,6 +81,8 @@ public class Maze extends JFrame{
 		revealPathBtn.setForeground(new Color(253, 254, 254));
 		revealPathBtn.setBackground(new Color(160, 64, 0));
 		revealPathBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+		revealPathBtn.setOpaque(true);
+		revealPathBtn.setBorderPainted(false);
 		revealPathBtn.setToolTipText("Click this for cheating");
 		revealPathBtn.addMouseListener(new MouseAdapter()
 		{
@@ -112,6 +117,8 @@ public class Maze extends JFrame{
 		changeModeBtn.setForeground(new Color(253, 254, 254));
 		changeModeBtn.setBackground(new Color(160, 64, 0));
 		changeModeBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    changeModeBtn.setOpaque(true);
+		changeModeBtn.setBorderPainted(false);
 		changeModeBtn.setToolTipText("Click this if you want to change to another mode");
 		changeModeBtn.addActionListener(new ActionListener()
 		{
