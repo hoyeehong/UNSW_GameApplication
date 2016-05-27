@@ -327,7 +327,7 @@ public class Board extends JPanel{
 
     public void restartLevel()
     {
-        //door.equals(null);        
+        paths.clear();        
         walls.clear();
         initWorld(width, height);
         if (completed)

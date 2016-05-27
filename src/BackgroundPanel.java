@@ -9,7 +9,7 @@ public class BackgroundPanel extends JPanel{
 	  {
 	    try
 	    {
-	      image = javax.imageio.ImageIO.read(new java.net.URL(getClass().getResource("images/bg.jpg"), "bg.jpg"));
+	      image = javax.imageio.ImageIO.read(new java.net.URL(getClass().getResource("images/bg2.jpg"), "bg2.jpg"));
 	    }
 	    catch (Exception e) {  }
 	  }

@@ -16,8 +16,9 @@ public class Maze extends JFrame{
 		rootPanel.setBorder(new EmptyBorder(new Insets(250, 210, 360, 210)));
 		
 		JButton easyLevelBtn = new JButton("Easy Mode");
-		easyLevelBtn.setBackground(Color.black);
-        easyLevelBtn.setForeground(Color.white);
+		easyLevelBtn.setFont(new Font("AR JULIAN", Font.PLAIN, 16));
+		easyLevelBtn.setBackground(Color.white);
+        easyLevelBtn.setForeground(Color.black);
         easyLevelBtn.setBorderPainted(false); 		
 		easyLevelBtn.addActionListener(new ActionListener()
 		{
@@ -28,8 +29,9 @@ public class Maze extends JFrame{
 		});
 		      
         JButton mediumLevelBtn = new JButton("Medium Mode");
-        mediumLevelBtn.setBackground(Color.black);
-        mediumLevelBtn.setForeground(Color.white);
+        mediumLevelBtn.setFont(new Font("AR JULIAN", Font.PLAIN, 16));
+        mediumLevelBtn.setBackground(Color.white);
+        mediumLevelBtn.setForeground(Color.black);
         mediumLevelBtn.setBorderPainted(false);    
         mediumLevelBtn.addActionListener(new ActionListener()
 		{
@@ -40,8 +42,9 @@ public class Maze extends JFrame{
 		});
                 
         JButton hardLevelBtn = new JButton("Hard Mode");
-        hardLevelBtn.setBackground(Color.black);
-        hardLevelBtn.setForeground(Color.white);
+        hardLevelBtn.setFont(new Font("AR JULIAN", Font.PLAIN, 16));
+        hardLevelBtn.setBackground(Color.white);
+        hardLevelBtn.setForeground(Color.black);
         hardLevelBtn.setBorderPainted(false);      
         hardLevelBtn.addActionListener(new ActionListener()
 		{
@@ -75,7 +78,7 @@ public class Maze extends JFrame{
 		revealPathBtn.setForeground(new Color(253, 254, 254));
 		revealPathBtn.setBackground(new Color(160, 64, 0));
 		revealPathBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-		
+		revealPathBtn.setToolTipText("Click this for cheating");
 		revealPathBtn.addMouseListener(new MouseAdapter()
 		{
 			public void mouseClicked(MouseEvent e)
@@ -109,7 +112,7 @@ public class Maze extends JFrame{
 		changeModeBtn.setForeground(new Color(253, 254, 254));
 		changeModeBtn.setBackground(new Color(160, 64, 0));
 		changeModeBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-		
+		changeModeBtn.setToolTipText("Click this if you want to change to another mode");
 		changeModeBtn.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
@@ -119,7 +122,7 @@ public class Maze extends JFrame{
 			    dispose();				     
 			}
 		});
-	
+
 		JPanel rightPanel = new JPanel();
 		rightPanel.add(revealPathBtn);
 		rightPanel.add(changeModeBtn);
@@ -145,7 +148,6 @@ public class Maze extends JFrame{
     }
 	
 	private static Maze maze;
-	
 	private JPanel rootPanel;
 	private final int OFFSET = 27;
 	

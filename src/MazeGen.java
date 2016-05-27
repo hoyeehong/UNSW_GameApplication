@@ -122,7 +122,7 @@ public class MazeGen implements MazeGenerator {
 		return mazeString;			
 	}
 	
-	public LinkedList<Node> generatePath(Point start, Point door)
+	private LinkedList<Node> generatePath(Point start, Point door)
 	{
 		Node startNode = new Node(start.x, start.y);
 		Node doorNode = new Node(door.x, door.y);
