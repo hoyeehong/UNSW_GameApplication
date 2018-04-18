@@ -2,6 +2,8 @@ import java.awt.Image;
 import java.net.URL;
 import javax.swing.ImageIcon;
 /**
+ * @author Yeehong Ho
+ * @date 30/5/2016
  * Door Object
  */
 public class Door extends Object{	
