@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 /**
+ * @author Yeehong Ho, Annie, Winnie
+ * @date 30/5/2016
  * Creates the main selection page and proceed to the actual Maze
  */
 public class Maze extends JFrame{
