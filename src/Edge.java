@@ -1,4 +1,6 @@
 /**
+ * @author Yeehong Ho
+ * @date 30/5/2016
  * Edges between nodes
  */
 public class Edge {
