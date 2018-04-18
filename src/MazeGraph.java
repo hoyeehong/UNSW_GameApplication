@@ -1,6 +1,8 @@
 import java.util.Iterator;
 import java.util.LinkedList;
 /**
+ * @author Yeehong Ho
+ * @date 30/5/2016
  * Creates a graph from the empty paths
  */
 public class MazeGraph {
