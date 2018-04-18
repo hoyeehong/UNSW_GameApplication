@@ -3,8 +3,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 /**
+ * @author Yeehong Ho, Annie
+ * @date 30/5/2016
  * Generates a random maze when player enters the game each time
- * @author Annie
  */
 public class MazeGen implements MazeGenerator {
 
