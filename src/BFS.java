@@ -1,6 +1,8 @@
 import java.util.LinkedList;
 /**
- * Breadth-First Searching
+ * @author Yeehong Ho
+ * @date 30/5/2016
+ * Breadth-First Search
  */
 public class BFS {
 
