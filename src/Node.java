@@ -1,5 +1,7 @@
 import java.util.LinkedList;
 /**
+ * @author Yeehong Ho
+ * @date 30/5/2016
  * Contain information on a node
  */
 public class Node {
